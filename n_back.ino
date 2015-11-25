@@ -13,7 +13,7 @@
 // Splash:  "N BACK" (prints)
 // 
 // Prompt:  "SELECT N BACK NUMBER" (scrolls left)
-// Menu:    " SEL:#"   (prints; where # can be: 1, 2, ..., 9)
+// Menu:    " SEL: #"  (prints; where # can be: 1, 2, ..., 9)
 //
 // Prompt:  "CHOOSE DIFFICULTY LEVEL" (scrolls left)
 //          "1 HARD"   (prints)
@@ -73,10 +73,10 @@ void setup()
   pinMode(PUSH2, INPUT_PULLUP);
 
   // Splash ////
-  printdc("n back", 3000);                                       // title, delay
+  printdc("n back", 3000);                                           // title, delay
   
   // Prompt -- n-back # ////
-  scroll_left("Select n back number", 1000, 400);                         // string, initial pause, scroll rate
+  scroll_left("Select n back number", 1000, 400);                    // string, initial pause, scroll rate
   delay(1000);
   LCD.clear();
 
@@ -95,7 +95,7 @@ void setup()
   difficulty_level = menu_selection(3)*1000;                         // argument: 3 menu items; scale by 1000 for game delay intervals
   
   // Transition ////
-  printdc("Lvl 1", 2000);                                        // string, delay
+  printdc("Lvl 1", 2000);                                            // string, delay
 }
 
 void loop() 
