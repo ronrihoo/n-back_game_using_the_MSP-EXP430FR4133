@@ -116,18 +116,15 @@ void loop()
     letter_set[i] = alphabet[temp];
   } 
   
-  // guarantee some, but randomize an addition of between 0 and 4.
+  // guarantee some n-backs, but randomize an addition of between 0 and 4.
   backs = g_backs + random(4);
   
   for (int j = 0; j < backs; j++)
   {
-    temp = random(set_size - n);
+    temp = random(set_size - n);                      // choose a random index in the set, limited by the n upper-bound
       
-    letter_set[temp + n] = letter_set[temp];
-    Serial.println(letter_set);
+    letter_set[temp + n] = letter_set[temp];          // plant the n-back repetition in the nth place after the temp index
   }
-  
-  Serial.println(letter_set);
   
   // Game loop
   for (counter = 0; counter < set_size; counter++)
