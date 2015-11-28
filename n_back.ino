@@ -13,7 +13,7 @@
 //                                    Flow
 // Splash:  "N BACK" (prints)
 //
-// Info:    "USE RIGHT BUTTON TO SELECT, UNPAUSE, OR UNPAUSE"  (scrolls left)
+// Info:    "USE RIGHT BUTTON TO SELECT, UNPAUSE, OR SKIP"  (scrolls left)
 //          "USE LEFT BUTTON TO ENTER OR PAUSE"                (scrolls left)
 // 
 // Prompt:  "SELECT N BACK NUMBER" (scrolls left)
