@@ -79,6 +79,7 @@ void setup()
   pinMode(LED2, OUTPUT);
 
   // Splash ////
+<<<<<<< HEAD
   LCD_printdc("n back", 3000);                                             // title, delay
   
   // Prompt -- Menu Instructions ////
@@ -87,6 +88,14 @@ void setup()
   
   // Prompt -- N-Back # ////
   scroll_left("Select n back number", 1000, 350, 0, true);                 // string, initial pause, scroll rate, post pause, clear
+=======
+  printdc("n back", 3000);                                           // title, delay
+  
+  // Prompt -- n-back # ////
+  scroll_left("Select n back number", 1000, 400);                    // string, initial pause, scroll rate
+  delay(1000);
+  LCD.clear();
+>>>>>>> origin/master
 
   // Menu Selection -- N-Back #////
   n = menu_selection(9);                                                   // argument: 9 menu options
@@ -101,7 +110,11 @@ void setup()
   difficulty_level = menu_selection(3)*1000;                               // argument: 3 menu items; scale by 1000 for game delay intervals
   
   // Transition ////
+<<<<<<< HEAD
   LCD_printdc("Lvl 1", 2000);                                              // string, delay
+=======
+  printdc("Lvl 1", 2000);                                            // string, delay
+>>>>>>> origin/master
 }
 
 void loop() 
@@ -128,19 +141,26 @@ void loop()
     letter_set[i] = alphabet[temp];
   }
   
-  // guarantee some, but randomize an addition of between 0 and 4.
+  // guarantee some n-backs, but randomize an addition of between 0 and 4.
   backs = g_backs + random(4);
   
   for (int j = 0; j < backs; j++)
   {
-    temp = random(set_size - n);
+    temp = random(set_size - n);                      // choose a random index in the set, limited by the n upper-bound
       
+<<<<<<< HEAD
     letter_set[temp + n] = letter_set[temp];
   }
   
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // level loop //////                                                                                        // level loop //////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+=======
+    letter_set[temp + n] = letter_set[temp];          // plant the n-back repetition in the nth place after the temp index
+  }
+  
+  // Game loop
+>>>>>>> origin/master
   for (counter = 0; counter < set_size; counter++)
   {
     // indicate that letter has changed, in case of same letter resulting next
