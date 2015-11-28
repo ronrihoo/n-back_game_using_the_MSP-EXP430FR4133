@@ -14,8 +14,8 @@ LCD_LAUNCHPAD LCD_XYZ;        // using a weird name so that one of the common on
 
 // SCROLLERS ////
 
-// Scroll left
-void scroll_left(char x[], int initial_pause, int scroll_speed)
+// Scroll Left
+void scroll_left(char x[], int initial_pause, int scroll_speed, int post_delay, boolean post_clear)
 {
   int i = 0;
   int j = 0;
@@ -67,10 +67,17 @@ void scroll_left(char x[], int initial_pause, int scroll_speed)
       delay(scroll_speed);
     }
   }
+  
+  delay(post_delay);
+  
+  if(post_clear == true)
+  {
+    LCD_XYZ.clear();
+  }
 }
 
-// Scroll right
-void scroll_right(char x[], int initial_pause, int scroll_speed)
+// Scroll Right
+void scroll_right(char x[], int initial_pause, int scroll_speed, int post_delay, boolean post_clear)
 {
   int i = 0;
   int j = 0;
@@ -122,10 +129,17 @@ void scroll_right(char x[], int initial_pause, int scroll_speed)
       delay(scroll_speed);
     }
   }
+  
+  delay(post_delay);
+  
+  if(post_clear == true)
+  {
+    LCD_XYZ.clear();
+  }
 }
 
-// Scroll left, with string length defined
-void scroll_left_wlength(char x[], int length, int initial_pause, int scroll_speed)
+// Scroll Left - with string length defined
+void scroll_left_wlength(char x[], int length, int initial_pause, int scroll_speed, int post_delay, boolean post_clear)
 {
   int i = 0;
   int j = 0;
@@ -175,11 +189,18 @@ void scroll_left_wlength(char x[], int length, int initial_pause, int scroll_spe
       delay(scroll_speed);
     }
   }
+  
+  delay(post_delay);
+  
+  if(post_clear == true)
+  {
+    LCD_XYZ.clear();
+  }
 }
 
 
-// Scroll right, with string length defined
-void scroll_right_wlength(char x[], int length, int initial_pause, int scroll_speed)
+// Scroll Right - with string length defined
+void scroll_right_wlength(char x[], int length, int initial_pause, int scroll_speed, int post_delay, boolean post_clear)
 {
   int i = 0;
   int j = 0;
@@ -229,10 +250,17 @@ void scroll_right_wlength(char x[], int length, int initial_pause, int scroll_sp
       delay(scroll_speed);
     }
   }
+  
+  delay(post_delay);
+  
+  if(post_clear == true)
+  {
+    LCD_XYZ.clear();
+  }
 }
 
-// Scroll left, bounded by string length
-void scroll_left_bounded(char x[], int initial_pause, int scroll_speed)
+// Scroll Left - bounded by string length
+void scroll_left_bounded(char x[], int initial_pause, int scroll_speed, int post_delay, boolean post_clear)
 {
   int i = 0;
   int j = 0;
@@ -269,10 +297,17 @@ void scroll_left_bounded(char x[], int initial_pause, int scroll_speed)
       delay(scroll_speed);
     }
   }
+  
+  delay(post_delay);
+  
+  if(post_clear == true)
+  {
+    LCD_XYZ.clear();
+  }
 }
 
-// Scroll right, bounded by string length
-void scroll_right_bounded(char x[], int initial_pause, int scroll_speed)
+// Scroll Right - bounded by string length
+void scroll_right_bounded(char x[], int initial_pause, int scroll_speed, int post_delay, boolean post_clear)
 {
   int i = 0;
   int j = 0;
@@ -310,27 +345,42 @@ void scroll_right_bounded(char x[], int initial_pause, int scroll_speed)
       delay(scroll_speed);
     }
   }
+  
+  delay(post_delay);
+  
+  if(post_clear == true)
+  {
+    LCD_XYZ.clear();
+  }
 }
 
 // PRINT FUNCTIONS ////
 
 // Print and delay
-void printd(char the_string[], int delay_time)
+void LCD_printd(char the_string[], int delay_time)
 {
   LCD_XYZ.print(the_string);
   delay(delay_time);
 }
 
 // Print, delay, and clear
-void printdc(char the_string[], int delay_time)
+void LCD_printdc(char the_string[], int delay_time)
 {
   LCD_XYZ.print(the_string);
   delay(delay_time);
   LCD_XYZ.clear();
 }
 
+// delay, and clear
+void LCD_delay_clear(int delay_time)
+{
+  delay(delay_time);
+  LCD_XYZ.clear();
+}
+
 // MENU FEATURES ////
 
+// Menu Display - three item list
 void menu_display_three_items(char item1[], char item2[], char item3[], int item_scroll_speed)
 { 
   int length1 = lengthof(item1) + 1;
@@ -341,41 +391,33 @@ void menu_display_three_items(char item1[], char item2[], char item3[], int item
   
   if(length1 > 7)
   {
-    scroll_left_wlength(item1, length1, 1000, item_scroll_speed);
+    scroll_left_wlength(item1, length1, 1000, item_scroll_speed, 0, true);
   }
   else
   {
-    LCD_XYZ.print(item1);
-    delay(2000);
+    LCD_printdc(item1, 2000);
   }
-  
-  LCD_XYZ.clear();
   
   if(length2 > 7)
   {
-    scroll_left_wlength(item2, length2, 1000, item_scroll_speed);
+    scroll_left_wlength(item2, length2, 1000, item_scroll_speed, 0, true);
   }
   else
   {
-    LCD_XYZ.print(item2);
-    delay(2000);
+    LCD_printdc(item2, 2000);
   }
-  
-  LCD_XYZ.clear();
   
   if(length3 > 7)
   {
-    scroll_left_wlength(item3, length3, 1000, item_scroll_speed);
+    scroll_left_wlength(item3, length3, 1000, item_scroll_speed, 0, true);
   }
   else
   {
-    LCD_XYZ.print(item3);
-    delay(2000);
+    LCD_printdc(item3, 2000);
   }
-  
-  LCD_XYZ.clear();
 }
 
+// Menu Selection - numbered list
 int menu_selection(int items)
 {
   int selection = 0;
