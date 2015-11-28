@@ -64,43 +64,48 @@ char alphabet[27] = "abcdefghijklmnopqrstuvwxyz";
 
 void setup()
 { 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // hardware initialization //////                                                              // hardware initialization //////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
   // Initialize the on-board LCD
-  LCD.init();
+  LCD.init();                                                              // initialize: LCD display
   
-  // Turn the red LED off (it turns on after serial comm. begins)
-  digitalWrite(LED1, LOW);
+  // initialize on-board push buttons 1 & 2 with input pullup
+  pinMode(PUSH1, INPUT_PULLUP);                                            // initialize: left push button
+  pinMode(PUSH2, INPUT_PULLUP);                                            // initialize: right push button
   
-  // set the on-board push buttons 1 & 2 with input pullup
-  pinMode(PUSH1, INPUT_PULLUP);
-  pinMode(PUSH2, INPUT_PULLUP);
-  
-  // initialize LEDs
-  pinMode(LED1, OUTPUT);      
-  pinMode(LED2, OUTPUT);
+  // initialize on-board LEDs
+  pinMode(LED1, OUTPUT);                                                   // initialize: Red LED
+  pinMode(LED2, OUTPUT);                                                   // initialize: Green LED
 
-  // Splash ////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // title, instructions, and menu //////                                                  // title, instructions, and menu //////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  // Splash ////////////////////////////////////////////
   LCD_printdc("n back", 3000);                                             // title, delay
   
-  // Prompt -- Menu Instructions ////
+  // Prompt -- Control Instructions ////////////////////
   scroll_left_bounded("Use right button to select or unpause", 1000, 350, 0, true);
   scroll_left_bounded("Use left button to enter or pause", 1000, 350, 0, true);
   
-  // Prompt -- N-Back # ////
+  // Prompt -- N-Back number ///////////////////////////
   scroll_left("Select n back number", 1000, 350, 0, true);                 // string, initial pause, scroll rate, post pause, clear
 
-  // Menu Selection -- N-Back #////
+  // Menu Selection -- N-Back number ///////////////////
   n = menu_selection(9);                                                   // argument: 9 menu options
 
-  // Prompt -- Difficulty Level ////
+  // Prompt -- Difficulty Level ////////////////////////
   scroll_left("Choose difficulty level", 1000, 350, 1000, true);           // string, initial pause, scroll rate, post pause, clear
   
-  // Menu Display -- Difficulty Level ////
+  // Menu Display -- Difficulty Level //////////////////
   menu_display_three_items("1 Hard", "2 Medium", "3 Easy", 300);           // item 1, ite..., scroll speed
 
-  // Menu Selection -- Difficulty Level////
+  // Menu Selection -- Difficulty Level ////////////////
   difficulty_level = menu_selection(3)*1000;                               // argument: 3 menu items; scale by 1000 for game delay intervals
   
-  // Transition ////
+  // Transition ////////////////////////////////////////
   LCD_printdc("Lvl 1", 2000);                                              // string, delay
 }
 
