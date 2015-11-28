@@ -41,6 +41,9 @@
  *
  * June 2015 StefanSch: Adopted for Energia
  *
+ * November 2015 Ron Rihoo: Modified to include some punctuation symbols
+ *                          and other symbol characters.
+ *
  ******************************************************************************/
 
 #include "LCD_Launchpad.h"
@@ -295,6 +298,25 @@ const char alphabetBig[26][2] =
     {0x90, 0x28}   /* "Z" */
 };
 
+// LCD memory map for some punctuation and other symbols
+const char punctuation[13][2] =
+{
+    {0x00, 0x40},  /* "'" LCD segment k */
+    {0x03, 0xFA},  /* "*" */
+    {0x03, 0x50},  /* "+" */
+    {0x00, 0x08},  /* "," */
+    {0x01, 0x00},  /* "-" */
+    {0x00, 0x28},  /* "/" */
+    {0x00, 0x22},  /* "<" */
+    {0x13, 0x00},  /* "=" */
+    {0x00, 0x88},  /* ">" */
+    {0x00, 0x82},  /* "\" */
+    {0x40, 0x20},  /* "^" */
+    {0x10, 0x00},  /* "_" */
+    {0x00, 0x80},  /* "`" */
+    {0x40, 0x40},  /* """ */
+};
+
 LCD_LAUNCHPAD::LCD_LAUNCHPAD(void) {
 }
 
@@ -449,6 +471,48 @@ void LCD_LAUNCHPAD::showChar(char c, int position)
         // Display alphabet
         LCDMEM[position] = alphabetBig[c-65][0];
         LCDMEM[position+1] = alphabetBig[c-65][1];
+    }
+    else if (c == '\'')
+    {
+        // Display apostrophe
+        LCDMEM[position] = punctuation[0][0];
+        LCDMEM[position+1] = punctuation[0][1];
+    }
+    else if (c >= '*' && c <= '-')
+    {
+        // Display asterisks, plus-sign, comma, minus-sign
+        LCDMEM[position] = punctuation[c-41][0];             // * == ASCII[42]; * == punctuation[1][]; 42 - 1 = 41;
+        LCDMEM[position+1] = punctuation[c-41][1];
+    }
+    else if (c == '/')
+    {
+        // Display forward-slash
+        LCDMEM[position] = punctuation[c-42][0];             // / == ASCII[47]; / == punctuation[5][]; 47 - 5 = 42
+        LCDMEM[position+1] = punctuation[c-42][1];
+    }
+    else if (c >= '<' && c <= '>')
+    {
+        // Display left arrow, fake equal-sign, right arrow
+        LCDMEM[position] = punctuation[c-54][0];             // < == ASCII[60]; < == punctuation[6][]; 60 - 6 = 54
+        LCDMEM[position+1] = punctuation[c-54][1];
+    }
+    else if (c == '\\')
+    {
+        // Display opening bracket, back-slash, closing bracket
+        LCDMEM[position] = punctuation[c-83][0];            // [ == ASCII[92]; [ == punctuation[9][]; 92 - 9 = 83
+        LCDMEM[position+1] = punctuation[c-83][1];
+    }
+    else if (c >= '^' && c <= '`')
+    {
+        // Display opening bracket, back-slash, closing bracket
+        LCDMEM[position] = punctuation[c-84][0];            // [ == ASCII[94]; [ == punctuation[9][]; 94 - 10 = 84
+        LCDMEM[position+1] = punctuation[c-84][1];
+    }
+    else if (c == '"')
+    {
+        // Display opening bracket, back-slash, closing bracket
+        LCDMEM[position] = punctuation[c-21][0];            // " == ASCII[34]; [ == punctuation[9][]; 34 - 13 = 21
+        LCDMEM[position+1] = punctuation[c-21][1];
     }
     else
     {

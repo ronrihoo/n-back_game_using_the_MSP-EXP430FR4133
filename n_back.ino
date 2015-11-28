@@ -1,5 +1,6 @@
-/////////////////////////////////////////////////////////////////////////
-// "n-back" brain-game for MSP430-FR4133
+////////////////////////////////////////////////////////////////////////////////////
+//
+// Title: "n-back" brain-game for MSP430-FR4133
 //
 // Brief: reads digital serial data from on-board push button 2 
 //        as an input from the user. User is to push the button 
@@ -8,12 +9,12 @@
 //
 // Note: at this point, I do not consider this project to be complete.
 //
-// ___________________________________________________________________
-//                                Flow
+// _______________________________________________________________________________
+//                                    Flow
 // Splash:  "N BACK" (prints)
 //
-// Info:    "USE RIGHT BUTTON TO SELECT OR UNPAUSE"  (scrolls left)
-//          "USE LEFT BUTTON TO ENTER OR PAUSE"      (scrolls left)
+// Info:    "USE RIGHT BUTTON TO SELECT, UNPAUSE, OR UNPAUSE"  (scrolls left)
+//          "USE LEFT BUTTON TO ENTER OR PAUSE"                (scrolls left)
 // 
 // Prompt:  "SELECT N BACK NUMBER" (scrolls left)
 // Menu:    " SEL: #"  (prints; where # can be: 1, 2, ..., 9)
@@ -29,11 +30,11 @@
 // Game:    "L    #" (where L = letter from set and # = score < 10)
 //          "L   ##" (where L = letter from set and # = score >  9)
 //          "L  ###" (where L = letter from set and # = score > 99)
-// ___________________________________________________________________
+// _______________________________________________________________________________
 //
 // Author: Ron Rihoo
 //
-/////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
 
 // Libraries
 #include "LCD_Launchpad.h"
@@ -42,7 +43,7 @@
 // Hardware
 LCD_LAUNCHPAD LCD;
 
-// Variables and Constants ////
+// Variables and Constants /////////////////////////////////////////////////////////
 
 // menu
 int difficulty_level = 0;   // game difficulty mode
@@ -87,7 +88,7 @@ void setup()
   LCD_printdc("n back", 3000);                                             // title, delay
   
   // Prompt -- Control Instructions ////////////////////
-  scroll_left_bounded("Use right button to select or unpause", 1000, 350, 0, true);
+  scroll_left_bounded("Use right button to select, unpause, or skip", 1000, 350, 0, true);
   scroll_left_bounded("Use left button to enter or pause", 1000, 350, 0, true);
   
   // Prompt -- N-Back number ///////////////////////////
