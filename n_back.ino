@@ -1,16 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////////
 //
-// Title: "n-back" brain-game for MSP430-FR4133
+// Title:   "n-back" brain-game (using the MSP-EXP430FR4133)
 //
-// Brief: reads digital serial data from on-board push button 2 
-//        as an input from the user. User is to push the button 
-//        everytime the same letter appears that had appeared n
-//        letters ago.
+// Brief:   reads digital serial data from on-board push button 2 
+//          as an input from the user. User is to push the button 
+//          everytime the same letter appears that had appeared n
+//          letters ago. 
 //
-// Note: at this point, I do not consider this project to be complete.
+// Note:    at this point, we do not consider this project to be
+//          mature enough to extend beyond the development board.
+//          There are many adjustments and additions to be made.
 //
 // _______________________________________________________________________________
-//                                    Flow
+//                             User-Interface Flow
 // Splash:  "N BACK" (prints)
 //
 // Info:    "USE RIGHT BUTTON TO SELECT, UNPAUSE, OR SKIP"  (scrolls left)
@@ -31,6 +33,10 @@
 //          "L   ##" (where L = letter from set and # = score >  9)
 //          "L  ###" (where L = letter from set and # = score > 99)
 // _______________________________________________________________________________
+//
+//
+// Team:   Christina El-Dabaghi
+//         Ron Rihoo
 //
 // Author: Ron Rihoo
 //
