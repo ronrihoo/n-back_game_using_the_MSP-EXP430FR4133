@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////
 //
-// Title:   "n-back" brain-game (using the MSP-EXP430FR4133)
+// Title:   "n-back" brain game (using the MSP-EXP430FR4133)
 //
 // Brief:   reads digital serial data from on-board push button 2 
 //          as an input from the user. User is to push the button 
@@ -16,7 +16,7 @@
 // Splash:  "N BACK" (prints)
 //
 // Info:    "USE RIGHT BUTTON TO SELECT, UNPAUSE, OR SKIP"  (scrolls left)
-//          "USE LEFT BUTTON TO ENTER OR PAUSE"                (scrolls left)
+//          "USE LEFT BUTTON TO ENTER OR PAUSE"             (scrolls left)
 // 
 // Prompt:  "SELECT N BACK NUMBER" (scrolls left)
 // Menu:    " SEL: #"  (prints; where # can be: 1, 2, ..., 9)
