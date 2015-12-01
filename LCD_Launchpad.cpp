@@ -299,7 +299,7 @@ const char alphabetBig[26][2] =
 };
 
 // LCD memory map for some punctuation and other symbols
-const char punctuation[13][2] =
+const char punctuation[14][2] =
 {
     {0x00, 0x40},  /* "'" LCD segment k */
     {0x03, 0xFA},  /* "*" */
