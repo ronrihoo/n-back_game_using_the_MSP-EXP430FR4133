@@ -2,8 +2,7 @@
 //
 // Title:   "n-back" brain game (using the MSP-EXP430FR4133)
 //
-// Brief:   reads digital serial data from on-board push button 2 
-//          as an input from the user. User is to push the button 
+// Brief:   a game that requires the push of the right (side) button 
 //          everytime the same letter appears that had appeared n
 //          letters ago. 
 //
