@@ -498,20 +498,20 @@ void LCD_LAUNCHPAD::showChar(char c, int position)
     }
     else if (c == '\\')
     {
-        // Display opening bracket, back-slash, closing bracket
-        LCDMEM[position] = punctuation[c-83][0];            // [ == ASCII[92]; [ == punctuation[9][]; 92 - 9 = 83
+        // Display opening back-slash
+        LCDMEM[position] = punctuation[c-83][0];            // \ == ASCII[92]; \ == punctuation[9][]; 92 - 9 = 83
         LCDMEM[position+1] = punctuation[c-83][1];
     }
     else if (c >= '^' && c <= '`')
     {
-        // Display opening bracket, back-slash, closing bracket
-        LCDMEM[position] = punctuation[c-84][0];            // [ == ASCII[94]; [ == punctuation[9][]; 94 - 10 = 84
+        // Display caret
+        LCDMEM[position] = punctuation[c-84][0];            // ^ == ASCII[94]; ^ == punctuation[10][]; 94 - 10 = 84
         LCDMEM[position+1] = punctuation[c-84][1];
     }
     else if (c == '"')
     {
         // Display opening bracket, back-slash, closing bracket
-        LCDMEM[position] = punctuation[c-21][0];            // " == ASCII[34]; [ == punctuation[9][]; 34 - 13 = 21
+        LCDMEM[position] = punctuation[c-21][0];            // " == ASCII[34]; " == punctuation[13][]; 34 - 13 = 21
         LCDMEM[position+1] = punctuation[c-21][1];
     }
     else
